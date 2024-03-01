@@ -1,0 +1,7 @@
+moviepy==1.0.3
+SpeechRecognition==3.8.1
+pydub==0.25.1
+requests==2.26.0
+tkinter
+json
+glob
