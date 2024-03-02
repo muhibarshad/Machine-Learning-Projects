@@ -18,6 +18,7 @@ def main():
             file_count+=1
     # print("\nTotal Number  of files\n", file_count)
     # print("\nDictionary containing  files\n", files_dict)
+    
     # getting unique words in the files and storing in a set
     with open('all_data.txt', 'a') as all_data :
         for key, _ in files_dict.items() :
@@ -46,17 +47,21 @@ def main():
                 tdm[i][j]+=1
     # print(tdm)
     
+    # making the colvector for user query 
     colVector = np.zeros((len(unique_word_dict),1), dtype=int)
-    # print(colVector)
-    # print(unique_word_dict)
     query = input("\nWrite something for searching:\n")
     uniqueWordsList = list(unique_word_dict.keys())
-    print(uniqueWordsList)
+    # print(uniqueWordsList)
+    
+    # Making the colvector of relatble user query frequencus of words
     for word in query.lower().split() :
         if word in uniqueWordsList :
             index = uniqueWordsList.index(word)
             colVector[index]+=1
     # print(colVector)
+    
+    '''Getting the highest frequency user query word and its index and then the word and then find the
+    relatble files conating that highest frequency word'''
     maximumFreq = np.max(colVector)
     if maximumFreq != 0 :
         indexMax= np.where(colVector==maximumFreq)
