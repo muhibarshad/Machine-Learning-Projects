@@ -1,3 +1,7 @@
+'''
+Basics of Numpy from simple creating arrays to Making Graphs and solving equations including everything with the oupputs 
+taking refernce from the documentation of the NUMPY 
+'''
 import numpy as np
 
 a = np.array([[1,2,3,4], [4,5,6,6], [2,3,4,5]])
@@ -194,5 +198,112 @@ ao = np.flip(ak)
 
 ap=  np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 
+aq = np.flip(ap)
+# print(aq)
+'''
+[[12 11 10  9]
+ [ 8  7  6  5]
+ [ 4  3  2  1]]
+'''
+ar = np.flip(ap, axis=0)
+'''
+[[ 9 10 11 12]
+ [ 5  6  7  8]
+ [ 1  2  3  4]]
+ '''
+at = np.flip(ap, axis=1)
+# print(at)
+'''
+[[ 4  3  2  1]
+ [ 8  7  6  5]
+ [12 11 10  9]]
+ '''
+ap[1] = np.flip(ap[1])
+# print(ap)
+'''
+[ 1  2  3  4]
+ [ 8  7  6  5]
+ [ 9 10 11 12]]
+ '''
+ 
 
+au = ak.flatten()
+au[1]= 9000
+# print(au)
+# print(ak)
+
+av = ak.ravel()
+av[1]=348
+# print(av)
+# print(ak)
+
+
+#Mean Squre Error formula
+yPred = np.array([1,1,1,2,3])
+yLabel = np.array([1,1,1,2,8])
+mean_square_error = (1/5) * np.sum(np.square(yPred-yLabel))
+# print(mean_square_error)
+
+# # For the single array
+# np.save('data',yPred)
+# ax= np.load('data.npy')
+# # save data as txt file
+# np.savetxt('data.txt', yPred)
+# az= np.loadtxt('data.txt')
+# # print(az)
+
+# # For the multiple arrays to save 
+# np.savez('twoArrays.npz', arr1=yPred, arr2=yLabel)
+# loadedArrys = np.load('twoArrays.npz')
+# # save data as csv file
+# np.savetxt('csvArrays.csv',(yPred,yLabel), delimiter=',')
+# loadedArrysCSV = np.loadtxt('csvArrays.csv',delimiter=',')
+# # print(loadedArrys['arr1'])
+# # print(loadedArrys['arr2'])
+# # print(loadedArrysCSV[0])
+# # print(loadedArrysCSV[1])
+
+# Working with the pandas
+import pandas as pd
+data = np.array([["Muhib", 20, "1200.0"],
+                ["Ali", 21, "1300.0"],
+                ["Abdullah", 22, "1400.0"]])
+np.savetxt('data.csv',data,delimiter=',',fmt='%s',header="Name, Age, TotalBill")
+dataGet = pd.read_csv('data.csv', header=0).values
+print(dataGet)
+ba = np.array([[-2.58289208,  0.43014843, -1.24082018, 1.59572603],
+              [ 0.99027828, 1.17150989,  0.94125714, -0.14692469],
+              [ 0.76989341,  0.81299683, -0.95068423, 0.11769564],
+              [ 0.20484034,  0.34784527,  1.96979195, 0.51992837]])
+bb = pd.DataFrame(ba)
+bb.to_csv('pd.csv')
+bc = pd.read_csv('pd.csv',)
+print(bc)
+
+# working with the matplotlib
+
+import matplotlib.pyplot as plt
+
+# ID
+bd = np.arange(9)
+plt.plot(bd)
+
+# 2D
+rngx = np.random.default_rng()
+x = rngx.random(10)
+y = rngx.random(10)
+plt.plot(x,y,'purple') # give line
+plt.plot(x,y,'o') # make dots
+
+#3D
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+X = np.arange(-5, 5, 0.15)
+Y = np.arange(-5, 5, 0.15)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis')
+
+# plt.show()
 
