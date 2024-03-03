@@ -15,7 +15,6 @@ def main() :
     x_Test = np.array(testData['X'])
     y_Test = np.array(testData['R'])
     
-    
     #Calculating the values for the sixDegree model
     m = len(x_Train)
     sum_x = np.sum(x_Train)
