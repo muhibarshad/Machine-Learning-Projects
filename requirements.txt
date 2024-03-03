@@ -2,6 +2,12 @@ moviepy==1.0.3
 SpeechRecognition==3.8.1
 pydub==0.25.1
 requests==2.26.0
+googletrans==4.0.0-rc1
 tkinter
 json
 glob
+ffmpeg
+pyaudio
+gtts
+pandas
+matplotlib
