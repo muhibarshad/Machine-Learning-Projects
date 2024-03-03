@@ -98,6 +98,6 @@ def main():
     with open(max_file_name, 'r') as f :
         text = f.read()
         print(f"File name : {max_file_name}\nContent : {text}")   
-    
+
 if __name__ =='__main__' :
     main()

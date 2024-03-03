@@ -240,9 +240,10 @@ av[1]=348
 
 #Mean Squre Error formula
 yPred = np.array([1,1,1,2,3])
-yLabel = np.array([1,1,1,2,8])
-mean_square_error = (1/5) * np.sum(np.square(yPred-yLabel))
-# print(mean_square_error)
+yLabel = np.array([2,3,4,2,8])
+# mean_square_error = (1/5) * np.sum(np.square(yPred-yLabel))
+mean_square_error =np.square(yPred-yLabel)
+print(mean_square_error)
 
 # # For the single array
 # np.save('data',yPred)
@@ -270,7 +271,7 @@ data = np.array([["Muhib", 20, "1200.0"],
                 ["Abdullah", 22, "1400.0"]])
 np.savetxt('data.csv',data,delimiter=',',fmt='%s',header="Name, Age, TotalBill")
 dataGet = pd.read_csv('data.csv', header=0).values
-print(dataGet)
+# print(dataGet)
 ba = np.array([[-2.58289208,  0.43014843, -1.24082018, 1.59572603],
               [ 0.99027828, 1.17150989,  0.94125714, -0.14692469],
               [ 0.76989341,  0.81299683, -0.95068423, 0.11769564],
@@ -278,7 +279,7 @@ ba = np.array([[-2.58289208,  0.43014843, -1.24082018, 1.59572603],
 bb = pd.DataFrame(ba)
 bb.to_csv('pd.csv')
 bc = pd.read_csv('pd.csv',)
-print(bc)
+# print(bc)
 
 # working with the matplotlib
 
