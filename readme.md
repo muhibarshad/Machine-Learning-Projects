@@ -2,22 +2,7 @@
 
 This repository contains a collection of Machine Learning projects implemented in Python. Each project is designed to showcase various machine learning techniques, algorithms, and libraries.
 
-## Projects
 
-1. **Sentiment Analysis with Natural Language Processing (NLP)**:
-   - Description: This project uses Natural Language Processing techniques to perform sentiment analysis on text data.
-   - Technologies: Python, NLTK, Scikit-learn
-   - Dataset: IMDb movie reviews dataset
-2. **Handwritten Digit Recognition with Convolutional Neural Networks (CNN)**:
-
-   - Description: This project demonstrates how to build a Convolutional Neural Network (CNN) for recognizing handwritten digits.
-   - Technologies: Python, TensorFlow, Keras
-   - Dataset: MNIST dataset
-
-3. **Predicting House Prices with Regression Models**:
-   - Description: This project utilizes regression models to predict house prices based on various features.
-   - Technologies: Python, Pandas, Scikit-learn
-   - Dataset: Boston Housing dataset
 
 ## Setup Instructions
 
