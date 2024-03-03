@@ -6,8 +6,10 @@ import os
 
 def main():
     
-    path = input("Enter the Files path like : ./files/ :\n")
-    pattern=input("Enter the pattern of files , like : *.txt :\n")
+    # path = input("Enter the Files path like : ./files/ :\n")
+    # pattern=input("Enter the pattern of files , like : *.txt :\n")
+    path =  "./files/"
+    pattern= "*.txt"
     files_dict = {}  
     file_count = 0 
     unique_word_set = set()
@@ -50,11 +52,33 @@ def main():
     colVector = np.zeros((len(unique_word_set),1), dtype=int)
     query = input("\nWrite something for searching:\n")
     
-    # Making the col vector TDM  as user query
+    #Loading snonyms and storing into dict
+    synonym_file_path = rf"{path}/synonyms.txt"
+    synonyms_dict = {}
+    with open(synonym_file_path, 'r') as f:
+        text = f.read()
+        arrSnonyms = text.split('\n') # splitting lines
+    for key, value in enumerate(arrSnonyms):
+        value = value.split(":") # splitting words and thier snonyms
+        val= value[1].split(",") # splitting snonymss
+        v = [st.strip() for st in val ] # removing spaces from snonyms
+        synonyms_dict[value[0]] = v # adding words and thier snonyms in dict
+    # print(synonyms_dict)
+    
+    
+    # Making the col vector TDM  as user query , if find or if not find find in snonyms
     queryWords = query.split()
     for key, value in enumerate(unique_word_set):
         if value in queryWords :
             colVector[key]+=1
+        else :
+            for k, v in synonyms_dict.items():
+                if value in v:
+                    corresK = k
+                    for i, j in enumerate(unique_word_set):
+                        if j == corresK :
+                            colVector[i]+=1
+
             
     # Calculatying the dot product of colvector and queryVector to calculate the simlarties between them 
     resultantVector  = np.dot(tdm, colVector)
