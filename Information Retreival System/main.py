@@ -5,11 +5,10 @@ import os
 
 
 def main():
-    
-    # path = input("Enter the Files path like : ./files/ :\n")
-    # pattern=input("Enter the pattern of files , like : *.txt :\n")
-    path =  "./files/"
-    pattern= "*.txt"
+    path = input("Enter the Files path like : ./files/ :\n")
+    pattern=input("Enter the pattern of files , like : *.txt :\n")
+    # path =  "./files/"
+    # pattern= "*.txt"
     files_dict = {}  
     file_count = 0 
     unique_word_set = set()
@@ -66,24 +65,31 @@ def main():
     # print(synonyms_dict)
     
     
-    # Making the col vector TDM  as user query , if find or if not find find in snonyms
+    # Making the col vector TDM  as user query in the files ,
     queryWords = query.split()
-    for key, value in enumerate(unique_word_set):
-        if value in queryWords :
-            colVector[key]+=1
+    for key, value in enumerate(queryWords):
+       # if find 
+        if value in unique_word_set :
+            for i, j in enumerate(unique_word_set):
+                        if j == value :
+                            colVector[i]+=1
+        # or if not find find in snonyms
         else :
             for k, v in synonyms_dict.items():
                 if value in v:
                     corresK = k
-                    for i, j in enumerate(unique_word_set):
-                        if j == corresK :
-                            colVector[i]+=1
-
+                    for l, m in enumerate(unique_word_set):
+                        if m == corresK :
+                            colVector[l]+=1
+                            
             
     # Calculatying the dot product of colvector and queryVector to calculate the simlarties between them 
     resultantVector  = np.dot(tdm, colVector)
     max_index = np.argmax(resultantVector)
     max_value = resultantVector[max_index]
+    # print(resultantVector)
+    # print(max_index)
+    # print(max_value)
     if max_value == 0 :
         print("Such words not found in any of the files in a directory ", path, "With pattern", pattern," !")
         return
